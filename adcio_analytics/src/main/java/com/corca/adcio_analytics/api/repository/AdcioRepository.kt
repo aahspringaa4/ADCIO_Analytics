@@ -15,17 +15,17 @@ interface AdcioRepository {
 class AdcioRepositoryImpl: AdcioRepository {
 
     override fun sendImpressionData(logOption: LogOption): Int {
-        val response = adcioApi.onProductImpressionEvent(logOption)
+        val response = adcioApi.onAdImpressionEvent(logOption)
         return response.execute().code()
     }
 
     override fun sendClickData(logOption: LogOption): Int {
-        val response = adcioApi.onProductClickEvent(logOption)
+        val response = adcioApi.onAdClickEvent(logOption)
         return response.execute().code()
     }
 
     override fun sendPurchaseData(logOption: LogOption): Int {
-        val response = adcioApi.onProductPurChaseEvent(logOption)
+        val response = adcioApi.onAdPurChaseEvent(logOption)
         return response.execute().code()
     }
 }

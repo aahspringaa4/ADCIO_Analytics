@@ -13,10 +13,9 @@ import com.corca.adcio_analytics.api.service.AdcioUrl
  500: HTTP Response Code = ServerException // Server Down or Unhandled client's error
 
  You should go through initialize and be authenticated before using Adcio Analytics.
- If you are uninitialized, return 0
+ If you are uninitialized, HTTP Response Code will be return 0
 
  You don't need to repeat most parameters unless you have to. But, the only parameter that you have to include is the "sessionId(device id)".
- [You can get sessionId "val sessionId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)"]
 
  */
 
@@ -28,21 +27,21 @@ class AdcioAnalytics {
         if(!bool) {
             return 0
         }
-        return processEvent(ProductImpressionEvent(logOption))
+        return processEvent(AdImpressionEvent(logOption))
     }
 
     fun clickLogEvent(logOption: LogOption): Int {
         if(!bool) {
             return 0
         }
-        return processEvent(ProductClickEvent(logOption))
+        return processEvent(AdClickEvent(logOption))
     }
 
     fun purchaseLogEvent(logOption: LogOption): Int {
         if(!bool) {
             return 0
         }
-        return processEvent(ProductPurchaseEvent(logOption))
+        return processEvent(AdPurchaseEvent(logOption))
     }
 }
 

@@ -8,17 +8,17 @@ import retrofit2.http.POST
 interface AdcioApi {
 
     @POST(AdcioUrl.EndPoint.impression)
-    fun onProductImpressionEvent(
+    fun onAdImpressionEvent(
         @Body logOption: LogOption
     ): Call<Void>
 
     @POST(AdcioUrl.EndPoint.click)
-    fun onProductClickEvent(
+    fun onAdClickEvent(
         @Body logOption: LogOption
     ): Call<Void>
 
     @POST(AdcioUrl.EndPoint.purchase)
-    fun onProductPurChaseEvent(
+    fun onAdPurChaseEvent(
         @Body logOption: LogOption
     ): Call<Void>
 }

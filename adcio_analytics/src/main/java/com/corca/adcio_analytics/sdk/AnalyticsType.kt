@@ -10,19 +10,19 @@ sealed class AnalyticsType {
 
 private val adcioRepository: AdcioRepository = AdcioRepositoryImpl()
 
-data class ProductImpressionEvent(val logOption: LogOption): AnalyticsType() {
+data class AdImpressionEvent(val logOption: LogOption): AnalyticsType() {
     override fun processEvent(): Int {
         return adcioRepository.sendImpressionData(logOption)
     }
 }
 
-data class ProductClickEvent(val logOption: LogOption): AnalyticsType() {
+data class AdClickEvent(val logOption: LogOption): AnalyticsType() {
     override fun processEvent(): Int {
         return adcioRepository.sendClickData(logOption)
     }
 }
 
-data class ProductPurchaseEvent(val logOption: LogOption): AnalyticsType() {
+data class AdPurchaseEvent(val logOption: LogOption): AnalyticsType() {
     override fun processEvent(): Int {
         return adcioRepository.sendPurchaseData(logOption)
     }
