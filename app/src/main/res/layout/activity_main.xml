@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btImpression"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="impressionEvent"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@id/btClick"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:backgroundTint="#DFDFDF" />
+
+    <Button
+        android:id="@+id/btClick"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="clickEvent"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:backgroundTint="#DFDFDF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/btImpression"
+        app:layout_constraintRight_toRightOf="@id/btImpression" />
+
+    <Button
+        android:id="@+id/btPurchase"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="purchaseEvent"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#DFDFDF"
+        app:layout_constraintTop_toBottomOf="@id/btClick"
+        app:layout_constraintLeft_toLeftOf="@id/btImpression"
+        app:layout_constraintRight_toRightOf="@id/btImpression" />
+</androidx.constraintlayout.widget.ConstraintLayout>
