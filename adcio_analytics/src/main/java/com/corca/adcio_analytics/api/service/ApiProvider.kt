@@ -8,6 +8,6 @@ private val retrofit: Retrofit = Retrofit.Builder().apply {
     addConverterFactory(GsonConverterFactory.create())
 }.build()
 
-internal val adcioApi: AdcioApi by lazy {
-    retrofit.create(AdcioApi::class.java)
+internal val adcioApi: AdcioService by lazy {
+    retrofit.create(AdcioService::class.java)
 }
