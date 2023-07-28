@@ -1,9 +1,11 @@
 package com.corca.adcio_analytics
 
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.corca.adcio_analytics.api.LogOption
 import com.corca.adcio_analytics.sdk.AdcioAnalytics
@@ -18,7 +20,10 @@ class MainActivity : AppCompatActivity() {
         val btImpression = findViewById<Button>(R.id.btImpression)
         val btClick = findViewById<Button>(R.id.btClick)
         val btPurchase = findViewById<Button>(R.id.btPurchase)
-        
+
+        /** init Example */
+        init(envFileName = null, urlKey = null, sessionId = Build.ID)
+
         btImpression.setOnClickListener {
             Thread {
                 Log.d("eventTag", "impression request ${impressionEvent()}")
@@ -38,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    val option = LogOption(
+    // EXAMPLE
+    private val option = LogOption(
         requestId = "",
         cost = 0,
         sessionId = "",
