@@ -1,7 +1,6 @@
 package com.corca.adcio_analytics.sdk
 
 import com.corca.adcio_analytics.api.LogOption
-import com.corca.adcio_analytics.api.error.NotInitializedError
 import com.corca.adcio_analytics.api.service.AdcioUrl
 
 /**
@@ -49,14 +48,15 @@ fun processEvent(analyticsType: AnalyticsType): Int {
     return analyticsType.processEvent()
 }
 
-// TODO("ENV 파일 로직 필요")
 fun init(
-    envFileName: String?,
+    envFileName: EnvFile?,
     urlKey: String?,
     sessionId: String,
 ) {
     if (envFileName != null) {
-
+        EnvFile(
+            envFiles = envFileName.envFiles
+        )
     }
     if (urlKey != null) {
         AdcioUrl.baseUrl = urlKey
