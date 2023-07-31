@@ -1,6 +1,7 @@
 package com.corca.adcio_analytics.sdk
 
 import com.corca.adcio_analytics.api.LogOption
+import com.corca.adcio_analytics.api.error.NotInitializedException
 import com.corca.adcio_analytics.api.service.AdcioUrl
 
 /**
@@ -12,7 +13,7 @@ import com.corca.adcio_analytics.api.service.AdcioUrl
  500: HTTP Response Code = ServerException // Server Down or Unhandled client's error
 
  You should go through initialize and be authenticated before using Adcio Analytics.
- If you are uninitialized, HTTP Response Code will be return 0
+ If you are uninitialized, HTTP Response Code will be throw NoInitializedError
 
  You don't need to repeat most parameters unless you have to. But, the only parameter that you have to include is the "sessionId(device id)".
 
@@ -24,6 +25,7 @@ class AdcioAnalytics {
 
     fun impressionLogEvent(logOption: LogOption): Int {
         if(!bool) {
+            throw NotInitializedException()
             return 0
         }
         return processEvent(AdImpressionEvent(logOption))
@@ -31,6 +33,7 @@ class AdcioAnalytics {
 
     fun clickLogEvent(logOption: LogOption): Int {
         if(!bool) {
+            throw NotInitializedException()
             return 0
         }
         return processEvent(AdClickEvent(logOption))
@@ -38,6 +41,7 @@ class AdcioAnalytics {
 
     fun purchaseLogEvent(logOption: LogOption): Int {
         if(!bool) {
+            throw NotInitializedException()
             return 0
         }
         return processEvent(AdPurchaseEvent(logOption))
