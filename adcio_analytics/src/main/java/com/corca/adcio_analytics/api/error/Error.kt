@@ -1,9 +1,12 @@
 package com.corca.adcio_analytics.api.error
 
-abstract class Error
+import kotlin.Exception
 
-class NotInitializedError: Error()
+abstract class Error: Exception()
 
-class FileNotFoundError: Error()
+class NotInitializedException: Error()
 
-class EmptyEnvFileError: Error()
+class FileNotFoundException: Error()
+
+class EmptyEnvFileException: Error()
+
