@@ -3,6 +3,8 @@ package com.corca.adcio_analytics.sdk
 import com.corca.adcio_analytics.api.LogOption
 import com.corca.adcio_analytics.api.error.NotInitializedException
 import com.corca.adcio_analytics.api.service.AdcioUrl
+import io.github.cdimascio.dotenv.Dotenv
+import io.github.cdimascio.dotenv.dotenv
 
 /**
 
@@ -22,46 +24,45 @@ import com.corca.adcio_analytics.api.service.AdcioUrl
 internal var bool: Boolean = false
 
 class AdcioAnalytics {
+    constructor()
 
-    fun impressionLogEvent(logOption: LogOption): Int {
-        if(!bool) {
+    fun impressionLogEvent(logOption: LogOption) {
+        if (!bool) {
             throw NotInitializedException()
-            return 0
         }
-        return processEvent(AdImpressionEvent(logOption))
+        processEvent(AdImpressionEvent(logOption))
     }
 
-    fun clickLogEvent(logOption: LogOption): Int {
+    fun clickLogEvent(logOption: LogOption) {
         if(!bool) {
             throw NotInitializedException()
-            return 0
         }
-        return processEvent(AdClickEvent(logOption))
+        processEvent(AdClickEvent(logOption))
     }
 
-    fun purchaseLogEvent(logOption: LogOption): Int {
+    fun purchaseLogEvent(logOption: LogOption) {
         if(!bool) {
             throw NotInitializedException()
-            return 0
         }
-        return processEvent(AdPurchaseEvent(logOption))
+        processEvent(AdPurchaseEvent(logOption) )
     }
 }
 
-fun processEvent(analyticsType: AnalyticsType): Int {
+fun processEvent(analyticsType: AnalyticsType) {
     return analyticsType.processEvent()
 }
 
+/**
+ envFile and urlKey are optional
+ If you don't override them, they will go into our default value.
+ */
 fun init(
-    envFileName: EnvFile?,
-    urlKey: String?,
-    sessionId: String,
+    envFileName: Dotenv = dotenv {
+        directory = "/assets"
+        filename = "env"
+    },
+    urlKey: String? = null,
 ) {
-    if (envFileName != null) {
-        EnvFile(
-            envFiles = envFileName.envFiles
-        )
-    }
     if (urlKey != null) {
         AdcioUrl.baseUrl = urlKey
     }

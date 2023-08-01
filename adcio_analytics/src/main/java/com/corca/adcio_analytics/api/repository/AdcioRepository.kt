@@ -5,27 +5,24 @@ import com.corca.adcio_analytics.api.service.adcioApi
 
 interface AdcioRepository {
 
-    fun sendImpressionData(logOption: LogOption): Int
+    fun sendImpressionData(logOption: LogOption)
 
-    fun sendClickData(logOption: LogOption): Int
+    fun sendClickData(logOption: LogOption)
 
-    fun sendPurchaseData(logOption: LogOption): Int
+    fun sendPurchaseData(logOption: LogOption)
 }
 
 class AdcioRepositoryImpl: AdcioRepository {
 
-    override fun sendImpressionData(logOption: LogOption): Int {
-        val response = adcioApi.onAdImpressionEvent(logOption)
-        return response.execute().code()
+    override fun sendImpressionData(logOption: LogOption) {
+        adcioApi.onAdImpressionEvent(logOption)
     }
 
-    override fun sendClickData(logOption: LogOption): Int {
-        val response = adcioApi.onAdClickEvent(logOption)
-        return response.execute().code()
+    override fun sendClickData(logOption: LogOption) {
+        adcioApi.onAdClickEvent(logOption)
     }
 
-    override fun sendPurchaseData(logOption: LogOption): Int {
-        val response = adcioApi.onAdPurChaseEvent(logOption)
-        return response.execute().code()
+    override fun sendPurchaseData(logOption: LogOption) {
+        adcioApi.onAdPurChaseEvent(logOption)
     }
 }
